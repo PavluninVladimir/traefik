@@ -19,7 +19,7 @@ services:
       - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routes.dashboard.rule=Host(`traefik.pavlunin.com`)"
+      - "traefik.http.routes.dashboard.rule=Host(`pavlunin.com`)"
       - "traefik.http.routes.dashboard.entrypoints=https"
       - "traefik.http.routes.dashboard.service=api@internal"
       - "traefik.http.routes.dashboard.middlewares=auth"
