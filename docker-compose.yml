@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: traefik:v2.10
+    command: 
+      - "--api.insecure=false"
+      - "--providers.docker"
+      - "--providers.docker.exposedByDefault=false"
+      - "--providers.docker.network=proxynet"
+      - "--entrypoints.http.address=:80"
+      - "--entrypoints.http.http.redirections.entrypoint.to=https"
+      - "--entrypoints.http.http.redirections.entrypoint.scheme=https"
+      - "--log.level=DEBUG"
+    # # Let'sEncrypt
+      - "--entrypoints.https.http.tls.certResolver=le"
+      - "--certificatesresolvers.le.acme.tlschallenge=true"
+      - "--certificatesresolvers.le.acme.email=vladimir@pavlunin.com"
+      - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routes.dashboard.rule=Host(`traefik.pavlunin.com`)"
+      - "traefik.http.routes.dashboard.entrypoints=https"
+      - "traefik.http.routes.dashboard.service=api@internal"
+      - "traefik.http.routes.dashboard.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=${USERS}"
+    ports:
+      - "80:80"
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+networks:
+  default:
+    name: proxynet
+    external: true
+      
