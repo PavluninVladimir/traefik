@@ -15,7 +15,7 @@ services:
       - "--entrypoints.https.address=:443"
       - "--entrypoints.http.http.redirections.entrypoint.to=https"
       - "--entrypoints.http.http.redirections.entrypoint.scheme=https"
-      - "--log.level=DEBUG"
+      # - "--log.level=DEBUG"
     # Let'sEncrypt
       - "--entrypoints.https.http.tls.certResolver=le"
       - "--certificatesresolvers.le.acme.tlschallenge=true"
