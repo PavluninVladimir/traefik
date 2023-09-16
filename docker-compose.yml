@@ -23,7 +23,7 @@ services:
       - "traefik.http.routes.dashboard.entrypoints=https"
       - "traefik.http.routes.dashboard.service=api@internal"
       - "traefik.http.routes.dashboard.middlewares=auth"
-      - "traefik.http.middlewares.auth.basicauth.users=${USERS}"
+      - "traefik.http.middlewares.auth.basicauth.users=${USER-AUTH}"
     ports:
       - "80:80"
       - 443:443
