@@ -28,7 +28,7 @@ services:
       - "traefik.http.middlewares.auth.basicauth.users=${USER-AUTH}"
     ports:
       - "80:80"
-      - 443:443
+      - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /letsencrypt:/letsencrypt
