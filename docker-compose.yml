@@ -11,8 +11,8 @@ services:
       - "--providers.docker.network=proxynet"
       - "--entrypoints.http.address=:80"
       - "--entrypoints.https.address=:443"
-      - "--entrypoints.http.http.redirections.entrypoint.to=https"
-      - "--entrypoints.http.http.redirections.entrypoint.scheme=https"
+      # - "--entrypoints.http.http.redirections.entrypoint.to=https"
+      # - "--entrypoints.http.http.redirections.entrypoint.scheme=https"
       - "--log.level=DEBUG"
     # # Let'sEncrypt
       - "--entrypoints.https.http.tls.certResolver=le"
