@@ -16,7 +16,7 @@ services:
       - "--entrypoints.http.http.redirections.entrypoint.to=https"
       - "--entrypoints.http.http.redirections.entrypoint.scheme=https"
       - "--log.level=DEBUG"
-    # # Let'sEncrypt
+    # Let'sEncrypt
       - "--entrypoints.https.http.tls.certResolver=le"
       - "--certificatesresolvers.le.acme.tlschallenge=true"
       - "--certificatesresolvers.le.acme.email=vladimir@pavlunin.com"
