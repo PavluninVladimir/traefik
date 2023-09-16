@@ -4,7 +4,7 @@ services:
   reverse-proxy:
     image: traefik:v2.10
     command: 
-      - "--api.insecure=false"
+      - "--api.insecure=true"
       - "--api.dashboard=true"
       - "--providers.docker"
       - "--providers.docker.exposedByDefault=false"
